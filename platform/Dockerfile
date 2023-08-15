@@ -1,13 +1,13 @@
 FROM python:3.11-slim-buster as prod
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get clean && apt-get update --fix-missing && apt-get install -y \
   default-libmysqlclient-dev \
   pkg-config \
   gcc \
   ca-certificates \
-  pkg-config \
   openjdk-11-jdk \
   && rm -rf /var/lib/apt/lists/*
+
 
 RUN pip install poetry==1.4.2
 
